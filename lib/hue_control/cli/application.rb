@@ -1,4 +1,5 @@
 require "thor"
+require "hue_control/cli/lights"
 
 module HueControl
   module Cli
@@ -14,6 +15,9 @@ module HueControl
         puts "Config file created."
         puts "Please edit #{CONFIG_FILE} and enter IP of the hue base and your api username."
       end
+
+      desc "lights", "Lights control"
+      subcommand "lights", HueControl::Cli::Lights
     end
   end
 end

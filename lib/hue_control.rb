@@ -23,12 +23,21 @@ module HueControl
     JSON.parse(response.body)
   end
 
+  def self.put(path, body)
+    response = RestClient.put(url(path), body.to_json, accept: :json, content_type: :json)
+    JSON.parse(response.body)
+  end
+
   def self.lights
     @@lights ||= self.get_lights
   end
 
   def self.lights=(lights)
     @@lights = lights
+  end
+
+  def self.lights_number(name)
+    lights.select {|k,v| v["name"] == name}.keys.first
   end
 
   private

@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby -U
+
+require "hue_control"
+HueControl::Cli::Application.start(ARGV)
